@@ -20,11 +20,17 @@ One set of weights is used to determine the greedy policy and the other one to d
 # Implementation details
 
 ## Loss function
+We use the Huber loss to further stabilize the DQN algorithm. It uses MSE for low values and MAE for large values.
 
+Indeed, in the [DQN Nature paper](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf) the authors write:
+> “We also found it helpful to clip the error term from the update [...] to be between -1 and 1. This form of error clipping further improved the stability of the algorithm.”
+
+The correct interpretation is given by OpenAI in this [post](https://openai.com/blog/openai-baselines-dqn/):
+> There are two ways to interpret this statement — clip the objective, or clip the multiplicative term when computing gradient. The former seems more natural, but it causes the gradient to be zero on transitions with high error, which leads to suboptimal performance, as found in one DQN implementation. The latter is correct and has a simple mathematical interpretation — __Huber Loss__.
 ## Optimization
 
 ## epsilon-greedy policy
 
 # Architecture
 
-# Ideas of future works
+# Ideas for future works
