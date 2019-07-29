@@ -37,8 +37,8 @@ class DDQNAgent(Agent):
 
         # Get expected Q values from local model
         Q_expected = self.qnetwork_local(states).gather(1, actions)
-        # Compute loss
-        loss = F.mse_loss(Q_expected, Q_targets)
+        # Compute huber loss
+        loss = F.smooth_l1_loss(Q_expected, Q_targets)
         # Minimize the loss
         self.optimizer.zero_grad()
         loss.backward()
