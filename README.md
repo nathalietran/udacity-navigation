@@ -47,7 +47,7 @@ pip install click
 ```
 
 You can run the code from the notebook but also from the command line.
-You need to change the `BANANA_APP` to the path of the Banana Unity Environment.
+You need to change the `BANANA_APP` variable in `run.py` to the path of the Banana Unity Environment.
 
 To train the agent and save the weights:
 ```
