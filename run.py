@@ -31,7 +31,7 @@ def plot_scores(agent, scores, rolling_window=10, save_fig=True):
 @click.option('--test', help='test or train agent', is_flag=True)
 def main(test):
     # init the environment
-    env = UnityEnvironment(file_name="/data/Banana_Linux_NoVis/Banana.x86_64")
+    env = UnityEnvironment(file_name="Banana.app")
     brain_name = env.brain_names[0]
     brain = env.brains[brain_name]
     env_info = env.reset(train_mode=True)[brain_name]
@@ -43,7 +43,7 @@ def main(test):
     # create an Double DQN agent
     agent = DoubleDQNAgent(state_size=state_size,
                            action_size=action_size,
-                           seed=42)
+                           seed=0)
     if not test:
         # train the agent
         scores = dqn(env, agent, n_episodes=1000)

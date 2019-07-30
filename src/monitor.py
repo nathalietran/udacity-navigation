@@ -17,6 +17,7 @@ def dqn(env, agent, n_episodes=2000, max_t=1000,
         eps_decay (float): multiplicative factor
             (per episode) for decreasing epsilon
     """
+    brain_name = env.brain_names[0]
     scores = []  # list containing scores from each episode
     scores_window = deque(maxlen=100)  # last 100 scores
     eps = eps_start  # initialize epsilon

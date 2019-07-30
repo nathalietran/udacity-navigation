@@ -65,6 +65,9 @@ Environment solved in 410 episodes!	Average Score: 13.04
 ```
 ![](figures/double_dqn_scores.png)
 
+We can follow the trained agent for one episode here:
+![](figures/agent.gif)
+
 # Ideas for future works
 There is still some room for improvements.
 
