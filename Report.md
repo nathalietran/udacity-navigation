@@ -52,6 +52,18 @@ network is Adam with a learning rate set to `LR = 0.0005` and other default para
 At the beginning, the Agent chooses a random action from the action space. Then, the exploration policy used is an epsilon-greedy policy with the ![](https://latex.codecogs.com/svg.latex?\epsilon) decreasing by a decay factor 0.995 from 1 to 0.01. That is, with the probability ![](https://latex.codecogs.com/svg.latex?\epsilon), the Agent selects a random action A and with probability ![](https://latex.codecogs.com/svg.latex?1-\epsilon), it selects an action that has a maximum Q value.
 
 # Plot of Rewards
+The environment has been solve in around 400 episodes ! Below is the plot of the agent's rewards.
+
+```
+Episode 100	Average Score: 0.53
+Episode 200	Average Score: 4.95
+Episode 300	Average Score: 7.35
+Episode 400	Average Score: 10.23
+Episode 500	Average Score: 12.71
+Episode 510	Average Score: 13.04
+Environment solved in 410 episodes!	Average Score: 13.04
+```
+![](figures/double_dqn_scores.png)
 
 # Ideas for future works
 There is still some room for improvements.
@@ -62,4 +74,4 @@ We can implement other extensions of the Deep Q-Networks (DQN) algorithm such as
 
 Moreover using __Prioritized Experience Replay__ can make experience replay more efficient and effective than if all experiences are sampled uniformly by introducing a stochastic sampling method.
 
-Finally, Google DeepMind's Rainbow DQN algorithm which incorporates all six existing extensions (each addressing a different issue with the original DQN algorithm) was shown to perform the best among all the other implementation. This algorithm can be used to further improve the performance of the Agent.
+Finally, Google DeepMind's Rainbow DQN algorithm which incorporates all six existing extensions (each addressing a different issue with the original DQN algorithm) was shown to perform the best among all the other implementations. This algorithm can be used to further improve the performance of the Agent.
