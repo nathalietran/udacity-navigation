@@ -49,7 +49,7 @@ pip install click
 You can run the code from the notebook but also from the command line.
 You need to change the `BANANA_APP` variable in `run.py` to the path of the Banana Unity Environment.
 
-To train the agent and save the weights:
+To train the agent and save the weights (in the `weights/` directory):
 ```
 python run.py
 ```
@@ -58,3 +58,5 @@ To test and watch a smart agent:
 ```
 python run.py --test
 ```
+
+The __report__ corresponds to the `Report.md` file.
