@@ -8,6 +8,10 @@ import torch
 from src.monitor import dqn, test_dqn
 from src.doubledqn import DoubleDQNAgent
 
+# path to banana UnityEnvironment
+# i.e. 'Banana.app'
+BANANA_APP = ''
+
 
 def plot_scores(agent, scores, rolling_window=10, save_fig=True):
     """Plot scores and optional rolling mean using specified window."""
@@ -31,7 +35,7 @@ def plot_scores(agent, scores, rolling_window=10, save_fig=True):
 @click.option('--test', help='test or train agent', is_flag=True)
 def main(test):
     # init the environment
-    env = UnityEnvironment(file_name="Banana.app")
+    env = UnityEnvironment(file_name=BANANA_APP)
     brain_name = env.brain_names[0]
     brain = env.brains[brain_name]
     env_info = env.reset(train_mode=True)[brain_name]
