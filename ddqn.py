@@ -1,7 +1,7 @@
 from base import Agent, TAU
 import torch.nn.functional as F
 
-class DDQNAgent(Agent):
+class DoubleDQNAgent(Agent):
     """Double Deep Q-Network Agent"""
 
     def __init__(self, state_size, action_size,
@@ -48,4 +48,4 @@ class DDQNAgent(Agent):
         self.soft_update(self.qnetwork_local, self.qnetwork_target, TAU)
 
     def __str__(self):
-        return "ddqn"
+        return "double_dqn"

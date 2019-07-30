@@ -14,7 +14,7 @@ The state space has 37 dimensions and contains the agent's velocity, along with 
 The task is episodic, and in order to solve the environment, your agent must get an average score of +13 over 100 consecutive episodes.
 
 # Learning algorithm
-The learning algorithm is based on Deep Q-learning (a deep Q-network) which generalizes the approximation of the Q-value function. __Double Q-learning (DDQN)__ tackle the issue of overestimation of Q-values that basic DQNs have.
+The learning algorithm is an extension of the Deep Q-Networks algorithm which generalizes the approximation of the Q-value function. __Double Q-learning (Double DQN)__ tackle the issue of overestimation of Q-values that basic DQNs have.
 
 To prevent this, double Q-Learning decouple the selection from the evaluation of an action. One set of weights is used to determine the greedy policy and the other one to determine its values. The target network is the obvious candidate for this. This network is the same as the online network except that its parameters ![](https://latex.codecogs.com/svg.latex?\theta_{target}) are updated softly every __four__ steps from the
 online network ![](https://latex.codecogs.com/svg.latex?\theta_{local}) as :
@@ -51,5 +51,15 @@ network is Adam with a learning rate set to `LR = 0.0005` and other default para
 ## epsilon-greedy policy
 At the beginning, the Agent chooses a random action from the action space. Then, the exploration policy used is an epsilon-greedy policy with the ![](https://latex.codecogs.com/svg.latex?\epsilon) decreasing by a decay factor 0.995 from 1 to 0.01. That is, with the probability ![](https://latex.codecogs.com/svg.latex?\epsilon), the Agent selects a random action A and with probability ![](https://latex.codecogs.com/svg.latex?1-\epsilon), it selects an action that has a maximum Q value.
 
+# Plot of Rewards
 
 # Ideas for future works
+There is still some room for improvements.
+
+We can try other optimizers such as the RMSProp mentioned in the DQN Nature paper.
+
+We can implement other extensions of the Deep Q-Networks (DQN) algorithm such as the __Dueling DQN__ which has the advantages that we do not need to calculate the value of each action at a state. DDQN can learn which states are (or are not) valuable without having to learn the effect of each action at each state. This new architecture speeds up the training and can more quickly identify the correct action for each action by decoupling the estimation of the state value and the advantage for each action between two streams.
+
+Moreover using __Prioritized Experience Replay__ can make experience replay more efficient and effective than if all experiences are sampled uniformly by introducing a stochastic sampling method.
+
+Finally, Google DeepMind's Rainbow DQN algorithm which incorporates all six existing extensions (each addressing a different issue with the original DQN algorithm) was shown to perform the best among all the other implementation. This algorithm can be used to further improve the performance of the Agent.
