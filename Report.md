@@ -73,8 +73,8 @@ There is still some room for improvements.
 
 We can try other optimizers such as the RMSProp mentioned in the DQN Nature paper.
 
-We can implement other extensions of the Deep Q-Networks (DQN) algorithm such as the __Dueling DQN__ which has the advantages that we do not need to calculate the value of each action at a state. DDQN can learn which states are (or are not) valuable without having to learn the effect of each action at each state. This new architecture speeds up the training and can more quickly identify the correct action for each action by decoupling the estimation of the state value and the advantage for each action between two streams.
+We can implement other extensions of the Deep Q-Networks (DQN) algorithm such as the [__Dueling DQN__](https://arxiv.org/abs/1511.06581) which has the advantages that we do not need to calculate the value of each action at a state. DDQN can learn which states are (or are not) valuable without having to learn the effect of each action at each state. This new architecture speeds up the training and can more quickly identify the correct action for each action by decoupling the estimation of the state value and the advantage for each action between two streams.
 
-Moreover using __Prioritized Experience Replay__ can make experience replay more efficient and effective than if all experiences are sampled uniformly by introducing a stochastic sampling method.
+Moreover using [__Prioritized Experience Replay__](https://arxiv.org/abs/1511.05952) can make experience replay more efficient and effective than if all experiences are sampled uniformly by introducing a stochastic sampling method.
 
-Finally, Google DeepMind's Rainbow DQN algorithm which incorporates all six existing extensions (each addressing a different issue with the original DQN algorithm) was shown to perform the best among all the other implementations. This algorithm can be used to further improve the performance of the Agent.
+Finally, Google DeepMind's [Rainbow DQN](https://arxiv.org/pdf/1710.02298.pdf) algorithm which incorporates all six existing extensions (each addressing a different issue with the original DQN algorithm) was shown to perform the best among all the other implementations. This algorithm can be used to further improve the performance of the Agent.
