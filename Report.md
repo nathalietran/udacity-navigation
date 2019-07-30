@@ -14,10 +14,26 @@ The state space has 37 dimensions and contains the agent's velocity, along with 
 The task is episodic, and in order to solve the environment, your agent must get an average score of +13 over 100 consecutive episodes.
 
 # Learning algorithm
-The learning algorithm is based on Deep Q-learning (a deep Q-network) which generalizes the approximation of the Q-value function. __Double Q-learning (DDQN)__ tackle the issue of overestimation of Q-values that basic DQNs have. To prevent this, double Q-Learning decouple the selection from the evaluation of an action.
-One set of weights is used to determine the greedy policy and the other one to determine its values.
+The learning algorithm is based on Deep Q-learning (a deep Q-network) which generalizes the approximation of the Q-value function. __Double Q-learning (DDQN)__ tackle the issue of overestimation of Q-values that basic DQNs have.
 
-# Implementation details
+To prevent this, double Q-Learning decouple the selection from the evaluation of an action. One set of weights is used to determine the greedy policy and the other one to determine its values. The target network is the obvious candidate for this. This network is the same as the online network except that its parameters ![](https://latex.codecogs.com/svg.latex?\theta_{target}) are updated softly every __four__ steps from the
+online network ![](https://latex.codecogs.com/svg.latex?\theta_{local}) as :
+
+![](https://latex.codecogs.com/svg.latex?\theta_{target}&space;=&space;\tau&space;*&space;\theta_{local}&space;&plus;&space;(1&space;-&space;\tau)&space;*&space;\theta_{target})
+
+
+In order to stabilize the training process, we apply replay buffer which memorizes experiences of the Agent. During learning, the Q-learning updates is applied on samples (or minibatches of size `BATCH_SIZE`) of experience drawn uniformly at random from the pool of stored samples of size `BUFFER_SIZE`.
+
+| | | |
+|-|-|-|
+|BATCH_SIZE| 64 |
+| BUFFER_SIZE | 100 000 |
+| ![](https://latex.codecogs.com/svg.latex?\tau)| 0.001 |
+| discount factor ![](https://latex.codecogs.com/svg.latex?\gamma) | 0.99 |
+
+# Architecture
+
+The model architecture consists of a neural network of two layers network with 64 hidden units in each layer and input state size of 37 dimensions and output actions size of 4. All these layers are separated by Rectifier Linear Units (ReLu).
 
 ## Loss function
 We use the Huber loss to further stabilize the DQN algorithm. It uses MSE for low values and MAE for large values.
@@ -27,10 +43,13 @@ Indeed, in the [DQN Nature paper](https://storage.googleapis.com/deepmind-media/
 
 The correct interpretation is given by OpenAI in this [post](https://openai.com/blog/openai-baselines-dqn/):
 > There are two ways to interpret this statement — clip the objective, or clip the multiplicative term when computing gradient. The former seems more natural, but it causes the gradient to be zero on transitions with high error, which leads to suboptimal performance, as found in one DQN implementation. The latter is correct and has a simple mathematical interpretation — __Huber Loss__.
+
 ## Optimization
+The optimization employed to train the
+network is Adam with a learning rate set to `LR = 0.0005` and other default parameters from PyTorch library.
 
 ## epsilon-greedy policy
+At the beginning, the Agent chooses a random action from the action space. Then, the exploration policy used is an epsilon-greedy policy with the ![](https://latex.codecogs.com/svg.latex?\epsilon) decreasing by a decay factor 0.995 from 1 to 0.01. That is, with the probability ![](https://latex.codecogs.com/svg.latex?\epsilon), the Agent selects a random action A and with probability ![](https://latex.codecogs.com/svg.latex?1-\epsilon), it selects an action that has a maximum Q value.
 
-# Architecture
-
+ 
 # Ideas for future works
