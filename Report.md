@@ -24,8 +24,8 @@ online network ![](https://latex.codecogs.com/svg.latex?\theta_{local}) as :
 
 In order to stabilize the training process, we apply replay buffer which memorizes experiences of the Agent. During learning, the Q-learning updates is applied on samples (or minibatches of size `BATCH_SIZE`) of experience drawn uniformly at random from the pool of stored samples of size `BUFFER_SIZE`.
 
-| | | |
-|-|-|-|
+| Parameter | |
+|-|-|
 |BATCH_SIZE| 64 |
 | BUFFER_SIZE | 100 000 |
 | ![](https://latex.codecogs.com/svg.latex?\tau)| 0.001 |
@@ -49,7 +49,7 @@ The optimization employed to train the
 network is Adam with a learning rate set to `LR = 0.0005` and other default parameters from PyTorch library.
 
 ## epsilon-greedy policy
-At the beginning, the Agent chooses a random action from the action space. Then, the exploration policy used is an epsilon-greedy policy with the ![](https://latex.codecogs.com/svg.latex?\epsilon) decreasing by a decay factor 0.995 from 1 to 0.01. That is, with the probability ![](https://latex.codecogs.com/svg.latex?\epsilon), the Agent selects a random action A and with probability ![](https://latex.codecogs.com/svg.latex?1-\epsilon), it selects an action that has a maximum Q value.
+At the beginning, the Agent chooses a random action from the action space. Then, the exploration policy used is an epsilon-greedy policy with the ![](https://latex.codecogs.com/svg.latex?\epsilon) decreasing by a decay factor 0.995 from 1 to 0.01. That is, with the probability ![](https://latex.codecogs.com/svg.latex?\epsilon), the Agent selects a random action A and with probability ![](https://latex.codecogs.com/svg.latex?1-\epsilon), it selects an action that has a maximum Q value.
 
- 
+
 # Ideas for future works
