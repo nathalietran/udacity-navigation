@@ -22,7 +22,7 @@ online network ![](https://latex.codecogs.com/svg.latex?\theta_{local}) as :
 ![](https://latex.codecogs.com/svg.latex?\theta_{target}&space;=&space;\tau&space;*&space;\theta_{local}&space;&plus;&space;(1&space;-&space;\tau)&space;*&space;\theta_{target})
 
 
-In order to stabilize the training process, we apply replay buffer which memorizes experiences of the Agent. During learning, the Q-learning updates is applied on samples (or minibatches of size `BATCH_SIZE`) of experience drawn uniformly at random from the pool of stored samples of size `BUFFER_SIZE`.
+In order to stabilize the training process, we apply replay buffer which memorizes experiences of the Agent. During learning, the Q-learning updates are applied on samples (or minibatches of size `BATCH_SIZE`) of experience drawn uniformly at random from the pool of stored samples of size `BUFFER_SIZE`.
 
 | Parameter | |
 |-|-|
